@@ -15,6 +15,7 @@ import {
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
