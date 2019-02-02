@@ -16,13 +16,15 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CourseCardListComponent } from './course-card-list/course-card-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     HomeComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    CourseCardListComponent
   ],
   imports: [
     BrowserModule,
