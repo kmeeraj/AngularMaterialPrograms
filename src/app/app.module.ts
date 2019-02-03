@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import {
   MatButtonModule,
   MatCardModule,
-  MatIconModule,
+  MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule, MatSidenavModule,
+  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSidenavModule, MatSortModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -40,10 +40,15 @@ import {CoursesService} from './services/courses.service';
     MatIconModule,
     MatCardModule,
     MatTabsModule,
-    AppRoutingModule,
     MatSidenavModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    AppRoutingModule
   ],
   providers: [
     CoursesService,
