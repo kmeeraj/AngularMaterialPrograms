@@ -18,6 +18,9 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CourseCardListComponent } from './course-card-list/course-card-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CourseComponent } from './course/course.component';
+import {CourseResolver} from './services/CourseResolver';
+import {CoursesService} from './services/courses.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http';
     AboutComponent,
     HomeComponent,
     TopMenuComponent,
-    CourseCardListComponent
+    CourseCardListComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ import {HttpClientModule} from '@angular/common/http';
     MatListModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [
+    CoursesService,
+    CourseResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@
       <p>{{course.longDescription}}</p>
     </mat-card-content>
     <mat-card-content class="course-actions">
-      <button mat-button class="mat-raised-button mat-primary">
+      <button mat-button class="mat-raised-button mat-primary" [routerLink]="['/courses', course.id]">
         VIEW COURSE
       </button>
     </mat-card-content>
