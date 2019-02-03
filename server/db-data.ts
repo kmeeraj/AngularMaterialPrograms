@@ -1,4 +1,4 @@
-import {Course} from "./course";
+import {Course} from "../src/app/model/course";
 
 export const COURSES: any = {
 
