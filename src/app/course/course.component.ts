@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {CoursesService} from '../services/courses.service';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../model/course';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {LessonsDatasource} from '../services/lessons.datasource';
-import {startWith, tap} from 'rxjs/operators';
-import {merge} from 'rxjs';
+import {debounce, debounceTime, distinct, distinctUntilChanged, startWith, tap} from 'rxjs/operators';
+import {fromEvent, merge} from 'rxjs';
 
 @Component({
   selector: 'app-course',
@@ -21,6 +21,8 @@ export class CourseComponent implements OnInit , AfterViewInit {
   paginator: MatPaginator;
   @ViewChild(MatSort)
   sort: MatSort;
+  @ViewChild('input')
+  input: ElementRef;
   constructor(private route: ActivatedRoute,
               private coursesService: CoursesService) { }
 
@@ -34,17 +36,27 @@ export class CourseComponent implements OnInit , AfterViewInit {
 
   ngAfterViewInit(): void {
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex =0);
-
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(150),
+        distinctUntilChanged(),
+        tap(() => {
+          this.paginator.pageIndex = 0;
+          this.loadLessonsPage();
+        })
+      ).subscribe();
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-        tap(() => {
-          this.dataSource.loadLessons(this.course.id, '', this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
-        })
+        tap(() => this.loadLessonsPage())
       )
      /* .subscribe(() => {
         this.dataSource.loadLessons(this.course.id, '', 'asc', this.paginator.pageIndex, this.paginator.pageSize);
       })*/
       .subscribe();
+  }
+  loadLessonsPage() {
+    this.dataSource.loadLessons(
+      this.course.id, this.input.nativeElement.value, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
   }
 
   /*searchLessons(search: string) {
