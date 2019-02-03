@@ -23,4 +23,7 @@ export class CourseComponent implements OnInit {
       .subscribe(lessons => this.dataSource.data = lessons);
   }
 
+  searchLessons(search: string) {
+    this.dataSource.filter = search.toLowerCase().trim();
+  }
 }
