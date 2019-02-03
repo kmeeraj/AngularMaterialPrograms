@@ -15,7 +15,7 @@ export class CoursesService {
   findByCourseById(courseId: number): Observable<Course> {
     return this.http.get<Course>(`/api/course/${courseId}`);
   }
-  findAllCourses(): Observable<Course[]>{
+  findAllCourses(): Observable<Course[]> {
     return this.http.get('/api/courses')
       .pipe(
         map(res => res['payload'])

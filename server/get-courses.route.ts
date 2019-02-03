@@ -4,7 +4,7 @@ import {COURSES} from './db-data';
 
 export function getAllCourses(req: Request, res: Response) {
 
-  res.status(200).json({payload: Object.values(COURSES)});
+  res.status(200).json({payload: (<any>Object)['values'](COURSES)});
 
 }
 
@@ -13,7 +13,7 @@ export function getCourseById(req: Request, res: Response) {
 
   const courseId = req.params['id'];
 
-  const courses: any = Object.values(COURSES);
+  const courses: any = (<any>Object)['values'](COURSES);
 
   const course = courses.find(course => course.id == courseId);
 

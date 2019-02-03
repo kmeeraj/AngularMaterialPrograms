@@ -1,6 +1,6 @@
 import {Course} from "../src/app/model/course";
 
-export const COURSES: any = {
+export const  COURSES: any = {
 
   0: {
     id:0,

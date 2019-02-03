@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CourseCardListComponent } from './course-card-list/course-card-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CourseCardListComponent } from './course-card-list/course-card-list.com
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
