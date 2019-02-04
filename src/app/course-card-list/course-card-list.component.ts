@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Course} from '../model/course';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 
 @Component({
@@ -18,6 +18,9 @@ export class CourseCardListComponent implements OnInit {
 
 
   editCourse({description, longDescription, category}: Course) {
-    this.dialog.open(CourseDialogComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = {description, longDescription, category};
+    this.dialog.open(CourseDialogComponent, dialogConfig);
   }
 }
