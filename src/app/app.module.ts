@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule, MatDialogModule,
   MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSidenavModule, MatSortModule, MatTableModule,
+  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -21,6 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { CourseComponent } from './course/course.component';
 import {CourseResolver} from './services/CourseResolver';
 import {CoursesService} from './services/courses.service';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {CoursesService} from './services/courses.service';
     HomeComponent,
     TopMenuComponent,
     CourseCardListComponent,
-    CourseComponent
+    CourseComponent,
+    CourseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,12 +51,18 @@ import {CoursesService} from './services/courses.service';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    AppRoutingModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    ReactiveFormsModule
   ],
   providers: [
     CoursesService,
     CourseResolver
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CourseDialogComponent]
 })
 export class AppModule { }
